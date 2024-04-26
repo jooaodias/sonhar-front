@@ -1,6 +1,11 @@
+import { memo } from "react";
 import "./style.css";
+import { IAuthenticatedUser } from "./models/login";
 
-export const Login = () => {
+interface Props {
+  setLoggedUser: (useInfo: IAuthenticatedUser) => void;
+}
+export const Login: React.FC<Props> = memo(({ setLoggedUser }) => {
   return (
     <div className="login-container">
       <div className="login-card">
@@ -29,4 +34,4 @@ export const Login = () => {
       </div>
     </div>
   );
-};
+});
