@@ -1,22 +1,20 @@
-import { useAuthUser } from "@/shared/provider";
 import {
   Box,
   Button,
   FormControl,
   FormLabel,
-  Input,
-  Stack,
-  Link,
   Heading,
+  Input,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-export function Login() {
+export const Register = () => {
   const nav = useNavigate();
-  const { loggedUser } = useAuthUser();
 
   const goToRegisterPage = () => {
-    nav("/register");
+    nav("/login");
   };
 
   return (
@@ -29,7 +27,7 @@ export function Login() {
       borderRadius="lg"
       boxShadow="lg"
     >
-      <Heading mb={4}>Login</Heading>
+      <Heading mb={4}>Cadastro</Heading>
       <form>
         <Stack spacing={3}>
           <FormControl id="email">
@@ -44,10 +42,10 @@ export function Login() {
             Acessar
           </Button>
           <Link color="gray.700" onClick={goToRegisterPage}>
-            Não tem cadastro? Cadastre-se aqui
+            Já tem cadastro? Faça o login aqui
           </Link>
         </Stack>
       </form>
     </Box>
   );
-}
+};

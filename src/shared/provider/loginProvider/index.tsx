@@ -16,7 +16,7 @@
  */
 
 import React, { ReactNode, useMemo, useState } from "react";
-import { IAuthenticatedUser } from "../../models/login";
+import { IAuthenticatedUser } from "../../../pages/Login/models/login";
 
 interface IUserContext {
   loggedUser: IAuthenticatedUser;
@@ -30,7 +30,7 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [loggedUser, setLoggedUser] = useState<IAuthenticatedUser>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   getMyInfo()
