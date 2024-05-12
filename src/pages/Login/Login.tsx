@@ -1,4 +1,5 @@
 import { PasswordButton } from "@/shared/components/PasswordButton";
+import { ILoginUser } from "@/shared/models/login";
 import { useAuthUser } from "@/shared/provider";
 import {
   Box,
@@ -10,36 +11,62 @@ import {
   Link,
   Heading,
   Text,
+  FormErrorMessage,
 } from "@chakra-ui/react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const nav = useNavigate();
   const { loggedUser } = useAuthUser();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginUser>();
+
   const goToRegisterPage = () => {
     nav("/register");
   };
 
+  const onSubmit: SubmitHandler<ILoginUser> = (data) => {
+    console.log(data);
+    // Lógica de autenticação...
+  };
+  console.log(errors.email);
   return (
     <Box
       p={4}
       maxWidth="400px"
       mx="auto"
-      mt="100px"
+      my="auto"
+      mt="48px"
       borderWidth="1px"
       borderRadius="lg"
       boxShadow="lg"
     >
       <Heading mb={4}>Login</Heading>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
-          <FormControl id="email">
+          <FormControl id="email" isInvalid={!!errors.email}>
             <FormLabel>Email</FormLabel>
-            <Input type="text" />
+            <Input
+              {...register("email", {
+                required: "E-mail obrigatório",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Digite um e-mail inválido",
+                },
+              })}
+              type="text"
+            />
+            <FormErrorMessage>
+              {errors.email && errors.email.message}
+            </FormErrorMessage>
           </FormControl>
 
-          <PasswordButton />
+          <PasswordButton error={errors} register={register} />
           <Text fontSize="small" color="gray.500">
             Esqueci a senha
           </Text>
