@@ -1,40 +1,37 @@
 import { PasswordButton } from "@/shared/components/PasswordButton";
-import { ILoginUser } from "@/shared/models/login";
-import { useAuthUser } from "@/shared/provider";
+import { IRegisterUser } from "@/shared/models/login";
 import {
   Box,
   Button,
   FormControl,
-  FormLabel,
-  Input,
-  Stack,
-  Link,
-  Heading,
-  Text,
   FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-export function Login() {
+export const Register = () => {
   const nav = useNavigate();
-  const { loggedUser } = useAuthUser();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginUser>();
+  } = useForm<IRegisterUser>();
 
   const goToRegisterPage = () => {
-    nav("/register");
+    nav("/login");
   };
 
-  const onSubmit: SubmitHandler<ILoginUser> = (data) => {
+  const onSubmit: SubmitHandler<IRegisterUser> = (data) => {
     console.log(data);
     // Lógica de autenticação...
   };
-  console.log(errors.email);
+
   return (
     <Box
       p={4}
@@ -46,9 +43,22 @@ export function Login() {
       borderRadius="lg"
       boxShadow="lg"
     >
-      <Heading mb={4}>Login</Heading>
+      <Heading mb={4}>Cadastro</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
+          <FormControl id="name" isInvalid={!!errors.name}>
+            <FormLabel>Nome</FormLabel>
+            <Input
+              {...register("name", {
+                required: "Nome obrigatório",
+                minLength: { value: 4, message: "No mínimo 4 caracteres" },
+              })}
+              type="text"
+            />
+            <FormErrorMessage>
+              {errors.name && errors.name.message}
+            </FormErrorMessage>
+          </FormControl>
           <FormControl id="email" isInvalid={!!errors.email}>
             <FormLabel>Email</FormLabel>
             <Input
@@ -65,26 +75,20 @@ export function Login() {
               {errors.email && errors.email.message}
             </FormErrorMessage>
           </FormControl>
-
-          <PasswordButton error={errors} register={register} />
-          <Text fontSize="small" color="gray.500">
-            Esqueci a senha
-          </Text>
-
+          <PasswordButton register={register} error={errors} />
           <Button
             bgColor="#f8e738"
             type="submit"
             _hover={{ bgColor: "#dfd025" }}
             _active={{ bgColor: "#b9ac25" }}
           >
-            Acessar
+            Inscrever
           </Button>
           <Link color="gray.700" onClick={goToRegisterPage}>
-            Ainda não é um voluntário do Sonhar Acordado Campinas? Inscreva-se e
-            venha fazer parte conosco
+            Já tem cadastro? Faça o login aqui
           </Link>
         </Stack>
       </form>
     </Box>
   );
-}
+};
