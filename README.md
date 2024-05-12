@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Sonhar Acordado Campianas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório do frontend da aplicação da Sonhar Acordado, onde desenvolvemos a interface do usuário para nossa plataforma que visa ajudar e promover ações solidárias.
 
-Currently, two official plugins are available:
+## Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação tem o intuito de possibilitar aos voluntários se cadastrarem na ong, realizar o pagamento da sua inscrição seja para o semestre ou para grandes festas além de possibilitar para a direção da ong um controle de onde os voluntários estão alocados e sua frequência.
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas - Frontend
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Utilizamos o React como nossa principal biblioteca JavaScript para construir interfaces de usuário dinâmicas e reativas. O React nos permite criar componentes reutilizáveis e estruturar nossa aplicação de forma modular.
+- **Vite**: Optamos por utilizar o Vite como nossa ferramenta de construção (build tool) para o desenvolvimento rápido e eficiente. O Vite oferece uma experiência de desenvolvimento extremamente rápida, com recarga a quente (hot reloading) e construção instantânea (instant server start).
 
-- Configure the top-level `parserOptions` property like this:
+## Como Executar o Projeto Localmente
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Antes de começar, verifique se você possui o Node.js e o npm instalados em sua máquina.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. **Clone este repositório:**
+
+   ```bash
+   git clone https://github.com/jooaodias/sonhar-front.git
+   ```
+
+2. **Instale as dependências:**
+
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento:**
+
+   ```bash
+    npm run dev
+   ```
+
+4. **Acesse a aplicação:**
+   <br/> O servidor de desenvolvimento estará em execução em http://localhost:3000. Abra este link em seu navegador para visualizar a aplicação.
+
+## Licença
