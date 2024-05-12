@@ -1,3 +1,4 @@
+import { PasswordButton } from "@/shared/components/PasswordButton";
 import { useAuthUser } from "@/shared/provider";
 import {
   Box,
@@ -8,6 +9,7 @@ import {
   Stack,
   Link,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,15 +38,23 @@ export function Login() {
             <FormLabel>Email</FormLabel>
             <Input type="text" />
           </FormControl>
-          <FormControl id="password">
-            <FormLabel>Senha</FormLabel>
-            <Input type="password" />
-          </FormControl>
-          <Button colorScheme="blue" type="submit">
+
+          <PasswordButton />
+          <Text fontSize="small" color="gray.500">
+            Esqueci a senha
+          </Text>
+
+          <Button
+            bgColor="#f8e738"
+            type="submit"
+            _hover={{ bgColor: "#dfd025" }}
+            _active={{ bgColor: "#b9ac25" }}
+          >
             Acessar
           </Button>
           <Link color="gray.700" onClick={goToRegisterPage}>
-            Não tem cadastro? Cadastre-se aqui
+            Ainda não é um voluntário do Sonhar Acordado Campinas? Inscreva-se e
+            venha fazer parte conosco
           </Link>
         </Stack>
       </form>

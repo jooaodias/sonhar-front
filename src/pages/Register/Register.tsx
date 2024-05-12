@@ -1,3 +1,4 @@
+import { PasswordButton } from "@/shared/components/PasswordButton";
 import {
   Box,
   Button,
@@ -34,12 +35,14 @@ export const Register = () => {
             <FormLabel>Email</FormLabel>
             <Input type="text" />
           </FormControl>
-          <FormControl id="password">
-            <FormLabel>Senha</FormLabel>
-            <Input type="password" />
-          </FormControl>
-          <Button colorScheme="blue" type="submit">
-            Acessar
+          <PasswordButton />
+          <Button
+            bgColor="#f8e738"
+            type="submit"
+            _hover={{ bgColor: "#dfd025" }}
+            _active={{ bgColor: "#b9ac25" }}
+          >
+            Inscrever
           </Button>
           <Link color="gray.700" onClick={goToRegisterPage}>
             Já tem cadastro? Faça o login aqui

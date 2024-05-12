@@ -16,7 +16,7 @@
  */
 
 import React, { ReactNode, useMemo, useState } from "react";
-import { IAuthenticatedUser } from "../../../pages/Login/models/login";
+import { IAuthenticatedUser } from "../../models/login";
 
 interface IUserContext {
   loggedUser: IAuthenticatedUser;
